@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerController : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class playerController : MonoBehaviour
 
     [SerializeField]
     float timeBetweenShots = 2;
+
+    [SerializeField]
+    Slider healthSlider;
+
+    float health;
 
     float timer = 2;
 
@@ -75,7 +81,7 @@ public class playerController : MonoBehaviour
 
         bool isGrounded = Physics2D.OverlapBox(GetFootPosition(), GetFootSize(), 0, groundLayer);
 
-        if (Input.GetAxisRaw("Jump") > 0 && hasReleasedJumpButton == true && isGrounded)
+        if (Input.GetAxisRaw("Jump") > 0 && hasReleasedJumpButton && isGrounded)
         {
             rBody.AddForce(Vector2.up * jumpForce);
             hasReleasedJumpButton = false;
@@ -84,6 +90,15 @@ public class playerController : MonoBehaviour
         if (Input.GetAxisRaw("Jump") == 0)
         {
             hasReleasedJumpButton = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "enemy")
+        {
+            health -= 10;
+            updateHealthSlider();
         }
     }
 
@@ -98,4 +113,8 @@ public class playerController : MonoBehaviour
         return new Vector2(GetComponent<Collider2D>().bounds.size.x * 0.9f, 0.1f);
     }
 
+    private void updateHealthSlider()
+    {
+        healthSlider.value = health;
+    }
 }

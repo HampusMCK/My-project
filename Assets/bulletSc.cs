@@ -9,6 +9,8 @@ public class bulletSc : MonoBehaviour
     [SerializeField]
     Vector2 power = new(300, 0);
 
+    float timer = 0;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,6 +25,17 @@ public class bulletSc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if (timer > 5)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "enemy")
+        {
+            Destroy(gameObject);
+        }
     }
 }
