@@ -11,21 +11,31 @@ public class spawnsc : MonoBehaviour
     [SerializeField]
     GameObject prefab;
 
+    public bool inWave = true;
+
+    int wave = 0;
+    int spawn = 5;
+    int i = 0;
+
     float timer;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= delay)
+        if (inWave && i <= spawn)
         {
-            Instantiate(prefab, gameObject.transform);
-            timer = 0;
+            timer += Time.deltaTime;
+            if (timer >= delay)
+            {
+                Instantiate(prefab, gameObject.transform);
+                timer = 0;
+                i++;
+            }
         }
     }
 }

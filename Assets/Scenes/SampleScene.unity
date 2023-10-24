@@ -534,7 +534,7 @@ MonoBehaviour:
   groundRadius: 0.2
   nuzzle: {fileID: 1387132023}
   bulletPrefab: {fileID: 7320020265029755543, guid: 4bc512f0dbf201b438cea0625b3616a1, type: 3}
-  timeBetweenShots: 0.5
+  timeBetweenShots: 0.2
   healthSlider: {fileID: 714121274}
 --- !u!50 &637114453
 Rigidbody2D:

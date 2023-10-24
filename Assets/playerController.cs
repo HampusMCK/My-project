@@ -30,9 +30,10 @@ public class playerController : MonoBehaviour
     [SerializeField]
     Slider healthSlider;
 
-    float health;
+    float health = 100;
 
     float timer = 2;
+    float t = 1;
 
     bool looking;
 
@@ -47,6 +48,7 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        t += Time.deltaTime;
 
         float moveX = Input.GetAxisRaw("Horizontal");
 
@@ -93,12 +95,23 @@ public class playerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "enemy")
+        if (other.gameObject.tag == "enemy" && t > 1.5f)
         {
             health -= 10;
             updateHealthSlider();
+            t = 0;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "enemy" && t > 1.5f)
+        {
+            health -= 10;
+            updateHealthSlider();
+            t = 0;
         }
     }
 
