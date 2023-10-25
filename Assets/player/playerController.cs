@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -30,11 +31,11 @@ public class playerController : MonoBehaviour//Player and game controller script
     [SerializeField]
     Slider healthSlider;
 
-    static public float cash;
+    static public decimal cash;
 
     static public float health = 100;
 
-    static public float healPrice = (100 - health) * 2;
+    static public decimal healPrice = (decimal)(100 - health) * 2;
 
     float timer = 2; //Timer for shooting
     float t = 1; //Timer for taking damage from enemies
@@ -54,7 +55,8 @@ public class playerController : MonoBehaviour//Player and game controller script
     // Update is called once per frame
     void Update()
     {
-        healPrice = (100 - health) * 2;
+        healPrice = (decimal)(100 - health) * 2;
+        healPrice = decimal.Round(healPrice, 1, MidpointRounding.AwayFromZero);
         if (wave) //Check if wave active to be able to play
         {
             t += Time.deltaTime;
@@ -155,6 +157,7 @@ public class playerController : MonoBehaviour//Player and game controller script
         if (cash - healPrice >= 0)
         {
             cash -= healPrice;
+            cash = decimal.Round(cash, 1, MidpointRounding.AwayFromZero);
             health = 100;
             updateHealthSlider();
         }

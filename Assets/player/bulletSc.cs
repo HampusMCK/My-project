@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class bulletSc : MonoBehaviour //Bullet controller script
 
     float timer = 0;
 
-    static public float upgradePrice = 12;
+    static public decimal upgradePrice = 12;
 
     static public float damage = 12.5f;
 
@@ -54,7 +55,8 @@ public class bulletSc : MonoBehaviour //Bullet controller script
         else
         {
             damage *= 1.2f;
-            upgradePrice *= 1.5f;
+            upgradePrice *= (decimal)1.5;
+            upgradePrice = decimal.Round(upgradePrice, 1, MidpointRounding.AwayFromZero);
         }
     }
 }
