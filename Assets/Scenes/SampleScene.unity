@@ -256,7 +256,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 7.6657867, w: 0}
+  m_margin: {x: -309.6899, y: 0, z: 7.6657867, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -832,6 +832,11 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7320020265029755543, guid: 4bc512f0dbf201b438cea0625b3616a1, type: 3}
   timeBetweenShots: 0.3
   healthSlider: {fileID: 714121274}
+  def: {fileID: 21300000, guid: 6343802f8546d2b4fb9de754b790c30e, type: 3}
+  upI: {fileID: 21300000, guid: cbd2fbf8eec9bbd43b92f09cdbbc605f, type: 3}
+  upII: {fileID: 21300000, guid: 8d7c78f6bbf59284ca39caf0ce98550a, type: 3}
+  upIII: {fileID: 21300000, guid: 36602b07f3e8542448b4a800ae62e934, type: 3}
+  upIIII: {fileID: 21300000, guid: b59cc8fea49aa8245b6681817f7ef101, type: 3}
 --- !u!50 &637114453
 Rigidbody2D:
   serializedVersion: 4

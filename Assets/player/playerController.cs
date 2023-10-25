@@ -31,6 +31,9 @@ public class playerController : MonoBehaviour//Player and game controller script
     [SerializeField]
     Slider healthSlider;
 
+    [SerializeField]
+    Sprite def, upI, upII, upIII, upIIII;
+
     static public decimal cash;
 
     static public float health = 100;
@@ -47,6 +50,7 @@ public class playerController : MonoBehaviour//Player and game controller script
     Rigidbody2D rBody;
     bool hasReleasedJumpButton = true;
 
+
     void Awake()
     {
         rBody = GetComponent<Rigidbody2D>();
@@ -55,6 +59,26 @@ public class playerController : MonoBehaviour//Player and game controller script
     // Update is called once per frame
     void Update()
     {
+        if (bulletSc.upgrades == 0)
+        {
+            GetComponent<SpriteRenderer>().sprite = def;
+        }
+        else if (bulletSc.upgrades == 1)
+        {
+            GetComponent<SpriteRenderer>().sprite = upI;
+        }
+        else if (bulletSc.upgrades == 2)
+        {
+            GetComponent<SpriteRenderer>().sprite = upII;
+        }
+        else if (bulletSc.upgrades == 3)
+        {
+            GetComponent<SpriteRenderer>().sprite = upIII;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = upIIII;
+        }
         healPrice = (decimal)(100 - health) * 2;
         healPrice = decimal.Round(healPrice, 1, MidpointRounding.AwayFromZero);
         if (wave) //Check if wave active to be able to play

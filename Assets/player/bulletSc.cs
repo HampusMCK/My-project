@@ -10,6 +10,8 @@ public class bulletSc : MonoBehaviour //Bullet controller script
     [SerializeField]
     Vector2 power = new(300, 0);
 
+    static public int upgrades = 0;
+
     float timer = 0;
 
     static public decimal upgradePrice = 12;
@@ -57,6 +59,7 @@ public class bulletSc : MonoBehaviour //Bullet controller script
             damage *= 1.2f;
             upgradePrice *= (decimal)1.5;
             upgradePrice = decimal.Round(upgradePrice, 1, MidpointRounding.AwayFromZero);
+            upgrades++;
         }
     }
 }
