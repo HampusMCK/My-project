@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cameraFollow : MonoBehaviour
+public class cameraFollow : MonoBehaviour //Script to make camera followe player
 {
     [SerializeField]
     Transform target;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawnsc : MonoBehaviour
+public class spawnsc : MonoBehaviour//Spawn enemies script
 {
 
     [SerializeField]
@@ -11,23 +11,16 @@ public class spawnsc : MonoBehaviour
     [SerializeField]
     GameObject prefab;
 
-    public bool inWave = true;
+    static public int wave = 1;
+    static public int spawn = 5;
+    int i = 0; //Enemies currently spawned
 
-    int wave = 0;
-    int spawn = 5;
-    int i = 0;
-
-    float timer;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    float timer = 2;
 
     // Update is called once per frame
     void Update()
     {
-        if (inWave && i <= spawn)
+        if (i < spawn)
         {
             timer += Time.deltaTime;
             if (timer >= delay)
@@ -37,5 +30,13 @@ public class spawnsc : MonoBehaviour
                 i++;
             }
         }
+    }
+
+    public void startWave()
+    {
+        wave++;
+        spawn = 5 * wave;
+        i = 0;
+        delay *= 0.8f;
     }
 }

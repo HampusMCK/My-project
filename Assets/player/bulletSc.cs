@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bulletSc : MonoBehaviour
+public class bulletSc : MonoBehaviour //Bullet controller script
 {
 
     Rigidbody2D rb;
@@ -10,6 +10,10 @@ public class bulletSc : MonoBehaviour
     Vector2 power = new(300, 0);
 
     float timer = 0;
+
+    static public float upgradePrice = 12;
+
+    static public float damage = 12.5f;
 
     void Awake()
     {
@@ -32,10 +36,25 @@ public class bulletSc : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.gameObject.tag == "enemy")
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void upgradeGun()
+    {
+        playerController.cash -= upgradePrice;
+        if (playerController.cash < 0)
+        {
+            playerController.cash += upgradePrice;
+        }
+        else
+        {
+            damage *= 1.2f;
+            upgradePrice *= 1.5f;
         }
     }
 }

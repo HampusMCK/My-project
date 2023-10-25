@@ -172,5 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  ui: {fileID: 3837296999806776269, guid: 53147bd0c46f5464e91b9427d5da70f2, type: 3}
   speed: 2
   hp: 100

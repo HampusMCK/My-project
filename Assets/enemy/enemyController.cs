@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class enemyController : MonoBehaviour
+public class enemyController : MonoBehaviour //Enemy controller and kill counter
 {
 
     [SerializeField]
@@ -17,13 +18,10 @@ public class enemyController : MonoBehaviour
     [SerializeField]
     float hp = 100;
 
-    [SerializeField]
-    int kills = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    int minEarn = 3 + (5 * (spawnsc.wave - 1));
+    int maxEarn = 11 + (7 * (spawnsc.wave - 1));
+
+    static public int kills = 0;
 
     // Update is called once per frame
     void Update()
@@ -34,12 +32,20 @@ public class enemyController : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(gameObject);
+            kills++;
+            playerController.cash += Random.Range(minEarn, maxEarn);
         }
     }
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.gameObject.tag == "bullet")
         {
-            hp -= 25;
+            hp -= bulletSc.damage;
         }
+    }
+
+    public void newWave()
+    {
+        kills = 0;
     }
 }
