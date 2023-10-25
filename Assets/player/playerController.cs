@@ -32,7 +32,9 @@ public class playerController : MonoBehaviour//Player and game controller script
 
     static public float cash;
 
-    float health = 100;
+    static public float health = 100;
+
+    static public float healPrice = (100 - health) * 2;
 
     float timer = 2; //Timer for shooting
     float t = 1; //Timer for taking damage from enemies
@@ -52,6 +54,7 @@ public class playerController : MonoBehaviour//Player and game controller script
     // Update is called once per frame
     void Update()
     {
+        healPrice = (100 - health) * 2;
         if (wave) //Check if wave active to be able to play
         {
             t += Time.deltaTime;
@@ -145,5 +148,15 @@ public class playerController : MonoBehaviour//Player and game controller script
     private void updateHealthSlider()
     {
         healthSlider.value = health;
+    }
+
+    public void Heal()
+    {
+        if (cash - healPrice >= 0)
+        {
+            cash -= healPrice;
+            health = 100;
+            updateHealthSlider();
+        }
     }
 }

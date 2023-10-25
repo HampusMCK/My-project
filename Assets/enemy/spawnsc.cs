@@ -9,7 +9,7 @@ public class spawnsc : MonoBehaviour//Spawn enemies script
     float delay;
 
     [SerializeField]
-    GameObject prefab;
+    GameObject zombie, zombie1;
 
     static public int wave = 1;
     static public int spawn = 5;
@@ -25,7 +25,23 @@ public class spawnsc : MonoBehaviour//Spawn enemies script
             timer += Time.deltaTime;
             if (timer >= delay)
             {
-                Instantiate(prefab, gameObject.transform);
+                if (wave > 2)
+                {
+                    int spawnChance = 12 - wave;
+                    int s = Random.Range(1, spawnChance);
+                    if (s == spawnChance - 1)
+                    {
+                        Instantiate(zombie1, gameObject.transform);
+                    }
+                    else
+                    {
+                        Instantiate(zombie, gameObject.transform);
+                    }
+                }
+                else
+                {
+                    Instantiate(zombie, gameObject.transform);
+                }
                 timer = 0;
                 i++;
             }

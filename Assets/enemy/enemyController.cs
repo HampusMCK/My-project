@@ -18,14 +18,18 @@ public class enemyController : MonoBehaviour //Enemy controller and kill counter
     [SerializeField]
     float hp = 100;
 
-    int minEarn = 3 + (5 * (spawnsc.wave - 1));
-    int maxEarn = 11 + (7 * (spawnsc.wave - 1));
+    [SerializeField]
+    int minStart, minIncrease, maxStart, maxIncrease;
+
 
     static public int kills = 0;
 
     // Update is called once per frame
     void Update()
     {
+        int minEarn = minStart + (minIncrease * (spawnsc.wave - 1));
+        int maxEarn = maxStart + (maxIncrease * (spawnsc.wave - 1));
+
         Vector2 movement = new Vector2(-speed, 0) * Time.deltaTime;
         transform.Translate(movement);
 

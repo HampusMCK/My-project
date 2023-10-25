@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class upgradePriceTXT : MonoBehaviour
+public class healPriceTXT : MonoBehaviour
 {
     void Update()
     {
-        if (playerController.cash < bulletSc.upgradePrice)
+         if (playerController.cash < playerController.healPrice)
         {
             GetComponent<TMP_Text>().color = Color.red;
         }
@@ -15,6 +15,6 @@ public class upgradePriceTXT : MonoBehaviour
         {
             GetComponent<TMP_Text>().color = Color.black;
         }
-        GetComponent<TMP_Text>().text = $"Upgrade Gun:\n${bulletSc.upgradePrice}";
+        GetComponent<TMP_Text>().text = $"Heal:\n${playerController.healPrice}";
     }
 }
