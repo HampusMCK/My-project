@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class playerController : MonoBehaviour//Player and game controller script
@@ -137,6 +138,10 @@ public class playerController : MonoBehaviour//Player and game controller script
         else
         {
             wave = true;
+        }
+        if (health <= 0)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
