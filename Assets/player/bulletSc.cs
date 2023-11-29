@@ -12,7 +12,7 @@ public class bulletSc : MonoBehaviour //Bullet controller script
 
     static public int upgrades = 0;
 
-    float timer = 0;
+    float Lifetimer = 0;
 
     static public decimal upgradePrice = 12;
 
@@ -32,8 +32,8 @@ public class bulletSc : MonoBehaviour //Bullet controller script
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > 5)
+        Lifetimer += Time.deltaTime;
+        if (Lifetimer > 5)
         {
             Destroy(gameObject);
         }

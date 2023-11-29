@@ -8,10 +8,6 @@ using UnityEngine.UIElements;
 
 public class enemyController : MonoBehaviour //Enemy controller and kill counter
 {
-
-    [SerializeField]
-    Transform target;
-
     [SerializeField]
     float speed;
 
